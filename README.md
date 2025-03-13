@@ -1,6 +1,6 @@
 # Imago
 
-Image commenting and approval system.
+### Image gallery with comments and approval (WIP).
 
 * Ruby version: 3.3.5
 
