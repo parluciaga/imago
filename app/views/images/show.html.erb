@@ -1,0 +1,22 @@
+<div class="section">
+  <div class="columns">
+    <div class="column is-two-thirds">
+      <div class="cell">
+        <div class="card">
+          <div class="card-image">
+            <figure>
+              <%= image_tag @image.picture %>
+            <figure>
+          </div>
+          <div class="card-content">
+            <p class="title is-5"><%= @image.name %></p>
+            <p class="Subtitle is-7"><%= @image.description %></p>
+            <p class="subtitle is-7"><%= number_to_human_size(@image.picture.blob.byte_size) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<%= form_with model: @image do |f| %>
+  <div class="columns is-flex-grow-1 is-mobile is-flex-direction-row-reverse is-multiline" style="min-height: 100vh;">
+    <div class="column my-auto">
+      <div class="file my-auto">
+        <label class="file-label mx-auto">
+          <input class="file-input" type="file" name="resume" />
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <%= f.file_field :picture, direct_upload: true, class: "file-label", placeholder: "Choose a file…"%>
+            <!-- <span class="file&#45;label"> Choose a file… </span> -->
+          <!-- </span> -->
+        </label>
+      </div>
+    </div>
+    <div class="column is-one-quarter-desktop has-text-primary-light my-auto p-6">
+        <div class="field">
+          <%= f.label :name, class: "label has-text-grey-lighter" %>
+          <div class="control">
+            <%= f.text_field :name, class: "input is-expanded" %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :description, class: "label has-text-grey-lighter" %>
+          <div class="control">
+            <%= f.text_area :description, class: "input textarea is-expanded" %>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <%= f.submit "Create Image", class: "button is-link" %>
+          </div>
+          <div class="control">
+            <%= link_to "Cancel", :back, class: "button is-link" %>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>
