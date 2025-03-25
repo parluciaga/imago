@@ -1,22 +1,56 @@
-<div class="section">
-  <div class="columns">
-    <div class="column is-two-thirds">
-      <div class="cell">
-        <div class="card">
-          <div class="card-image">
-            <figure>
-              <%= image_tag @image.picture %>
-            <figure>
-          </div>
-          <div class="card-content">
-            <p class="title is-5"><%= @image.name %></p>
-            <p class="Subtitle is-7"><%= @image.description %></p>
-            <p class="subtitle is-7"><%= number_to_human_size(@image.picture.blob.byte_size) %></p>
+<div class="hero is-fullheight">
+  <div class="hero-head">
+    <p class="has-text-light">header</p>
+  </div>
+  <div class="hero-body">
+    <div class="columns is-flex-grow-1">
+      <div class="column is-two-thirds">
+        <div class="cell">
+          <div class="card">
+            <div class="card-image">
+              <figure>
+                <%= image_tag @image.picture %>
+              <figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-5"><%= @image.name %></p>
+              <p class="Subtitle is-7"><%= @image.description %></p>
+              <p class="subtitle is-7"><%= number_to_human_size(@image.picture.blob.byte_size) %></p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="column is-one-third is-flex is-flex-direction-column">
+        <div class="container">
+            <div class="messages-box">
+              <div class="message has-text-white">Oldest message</div>
+              <div class="message has-text-white">Another message</div>
+              <div class="message has-text-white">Most recent message</div>
+            </div>
+        </div>
+        <div class="container is-align-content-flex-end">
+            <div class="field has-addons">
+              <div class="control is-expanded">
+                <input class="input" type="text" placeholder="Write a comment..."></input>
+              </div>
+              <div class="control">
+                <button class="button is-primary">Send</button>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
-    <div class="column">
+  </div>
+  <div class="hero-foot">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-narrow">
+          <div class="buttons mb-5">
+            <button class="button is-primary">Approve</button>
+            <button class="button is-danger">Reject</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
