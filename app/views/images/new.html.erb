@@ -1,38 +1,44 @@
 <%= form_with model: @image do |f| %>
-  <div class="columns is-flex-grow-1 is-mobile is-flex-direction-row-reverse is-multiline" style="min-height: 100vh;">
-    <div class="column my-auto">
+  <nav class="breadcrumb pt-2 pl-2" aria-label="breadcrumbs">
+    <ul>
+      <li><%= link_to t('navigation.images', default: 'images').titleize, images_path, class: "has-text-white" %></li>
+      <li class="is-active"><%= link_to t('navigation.image.upload', default: 'upload').titleize, new_image_path, class: "has-text-grey" %></li>
+    </ul>
+  </nav>
+  <div class="columns is-fullheight is-flex-grow-1 is-mobile is-flex-direction-row-reverse is-multiline" style="min-height: 100vh;">
+    <div class="column is-fullheight my-auto">
       <div class="file my-auto">
         <label class="file-label mx-auto">
           <%= f.file_field :picture, direct_upload: true, class: "file-input"  %>
           <span class="file-cta">
             <span class="file-icon material-icons">upload</span>
-            <span> "Choose a file…" </span>
-            <!-- <span class="file&#45;label"> Choose a file… </span> -->
+            <span><%= t(:choose_file)%> </span>
           </span>
         </label>
       </div>
     </div>
-    <div class="column is-one-quarter-desktop has-text-primary-light my-auto p-6">
-        <div class="field">
-          <%= f.label :name, class: "label has-text-grey-lighter" %>
-          <div class="control">
-            <%= f.text_field :name, class: "input is-expanded" %>
-          </div>
+    <div class="column is-fullheight is-one-quarter-desktop has-text-primary-light my-auto p-6">
+      <div class="field">
+        <%= f.label titleized_attribute(@image, :name), class: "label has-text-grey-lighter" %>
+        <div class="control">
+          <%= f.text_field :name, class: "input is-expanded" %>
         </div>
-        <div class="field">
-          <%= f.label :description, class: "label has-text-grey-lighter" %>
-          <div class="control">
-            <%= f.text_area :description, class: "input textarea is-expanded" %>
-          </div>
+      </div>
+      <div class="field">
+        <%= f.label titleized_attribute(@image, :description), class: "label has-text-grey-lighter" %>
+        <div class="control">
+          <%= f.text_area :description, class: "input textarea is-expanded" %>
         </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <%= f.submit "Create Image", class: "button is-link" %>
-          </div>
-          <div class="control">
-            <%= link_to "Cancel", :back, class: "button is-link" %>
-          </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <%= f.submit t(:create_image), class: "button is-link" %>
         </div>
+        <div class="control">
+          <%= link_to t(:cancel), :back, class: "button is-link" %>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 <% end %>

@@ -1,16 +1,21 @@
 <div class="hero is-fullheight">
   <div class="hero-head">
-    <p class="has-text-light">header</p>
+     <nav class="breadcrumb pt-2 pl-2" aria-label="breadcrumbs">
+        <ul>
+          <li><%= link_to t('navigation.images', default: 'images').titleize, images_path, class: "has-text-white" %></li>
+          <li class="is-active"><%= link_to t('navigation.image.show', default: 'show').titleize, image_path(params[:id]), class: "has-text-grey" %></li>
+        </ul>
+      </nav>
   </div>
   <div class="hero-body">
     <div class="columns is-flex-grow-1">
-      <div class="column is-two-thirds">
+      <div class="column is-two-thirds is-justify-content-center is-align-items-center">
         <div class="cell">
-          <div class="card">
+          <div class="card" style="width: fit-content;">
             <div class="card-image">
               <figure>
                 <%= image_tag @image.picture %>
-              <figure>
+              </figure>
             </div>
             <div class="card-content">
               <p class="title is-5"><%= @image.name %></p>
@@ -21,22 +26,38 @@
         </div>
       </div>
       <div class="column is-one-third is-flex is-flex-direction-column">
-        <div class="container">
-            <div class="messages-box">
-              <div class="message has-text-white">Oldest message</div>
-              <div class="message has-text-white">Another message</div>
-              <div class="message has-text-white">Most recent message</div>
+        <div class="box has-background-grey-lighter is-flex is-flex-direction-column" style="flex: 1">
+          <div class="messages-container" style="flex: 1; overflow-y: auto; margin-bottom: 1rem; display: flex; flex-direction: column-reverse;">
+            <div class="messages-box is-flex is-flex-direction-column is-align-content-flex-end">
+              <% @image.comments.each do |comment| %>
+                <% if comment.user == Current.user %>
+                  <div class="message-wrapper is-flex is-justify-content-flex-end mb-2">
+                    <div class="message is-small p-2 has-background-primary has-text-white" style="max-width: 80%; border-radius: 10px 10px 0 10px;">
+                      <%= comment.body %>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="message-wrapper is-flex is-justify-content-flex-start mb-2">
+                    <div class="message is-small p-2 has-background-white" style="max-width: 80%; border-radius: 10px 10px 10px 0;">
+                      <%= comment.body %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
-        </div>
-        <div class="container is-align-content-flex-end">
-            <div class="field has-addons">
-              <div class="control is-expanded">
-                <input class="input" type="text" placeholder="Write a comment..."></input>
+          </div>
+          <div>
+            <%= form_with(model: [@image, @image.comments.build], local: true) do |f| %>
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <%= f.text_field :body, class: "input", placeholder: "Write a comment..." %>
+                </div>
+                <div class="control">
+                  <%= f.submit "Send", class: "button is-primary" %>
+                </div>
               </div>
-              <div class="control">
-                <button class="button is-primary">Send</button>
-              </div>
-            </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

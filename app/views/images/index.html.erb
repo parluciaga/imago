@@ -6,9 +6,13 @@
     <div>
       <%= search_field_tag "Search", "search", class: "input is-normal" %>
     </div>
+    <div>
+      <p><%= Current.user.email_address %></p>
+    </div>
   </div>
 </nav>
 <div class="section">
+  <%= console %>
   <div class="columns is-mobile is-multiline is-variable is-col-min-10 is-centered is-gap-3">
     <%= render @images %>
   </div>

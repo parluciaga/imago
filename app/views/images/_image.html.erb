@@ -1,22 +1,24 @@
 <div class="cell">
-  <div class="card">
-    <div class="card-image">
-      <figure>
-        <%= image_tag image.picture.variant(resize_to_fill: [300, 300]) %>
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="columns">
-        <div class="column is-four-fifths">
-          <p class="title is-5"><%= image.name %></p>
-          <p class="subtitle is-7"><%= number_to_human_size(image.picture.blob.byte_size) %></p>
-        </div>
-        <div class="column">
-          <span>
-            <%= orientation_icon(image) %>
-          </span>
+  <%= link_to(image) do %>
+    <div class="card">
+      <div class="card-image">
+        <figure>
+          <%= image_tag image.picture.variant(resize_to_fill: [300, 300]) %>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="columns">
+          <div class="column is-four-fifths">
+            <p class="title is-5"><%= image.name %></p>
+            <p class="subtitle is-7"><%= number_to_human_size(image.picture.blob.byte_size) %></p>
+          </div>
+          <div class="column">
+            <span>
+              <%= orientation_icon(image) %>
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
