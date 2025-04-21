@@ -21,7 +21,8 @@ class ImagesController < ApplicationController
     if @image.save
       redirect_to images_path, notice: "Image successfully uploaded"
     else
-      render :new
+      flash.now[:alert] = "#{t(:errors)}: #{@image.errors.full_messages.join(', ')}"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,6 +33,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.expect(image: [ :name, :description, :picture ])
+    user = User.find_by(id: authenticated?.user_id)
+    params.expect(image: [ :name, :description, :picture, comments_attributes: [ [ :body, user, :image ] ] ])
   end
 end

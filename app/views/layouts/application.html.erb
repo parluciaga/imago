@@ -25,6 +25,19 @@
   </head>
 
   <body class="has-background-grey-dark" style="min-height: 100vh;">
+    <% if flash[:notice] %>
+      <div class="notification is-success">
+        <button class="delete"></button>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="notification is-warning">
+        <button class="delete"></button>
+        <%= t(flash[:alert]) %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

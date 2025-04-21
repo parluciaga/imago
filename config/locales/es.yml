@@ -1,0 +1,29 @@
+es:
+  hello: "Hola mundo"
+  errors: "Errores"
+  create_image: "Crear imagen"
+  cancel: "Cancelar"
+  choose_file: "Seleccionar archivo"
+  images:
+    image:
+      square: "Cuadrada"
+      landscape: "Apaisada"
+      portrait: "Vertical"
+  activerecord:
+    models:
+      image: "imagen"
+    attributes:
+      image:
+        picture: "archivo"
+        name: "nombre"
+        description: "descripción"
+          
+    errors:
+      messages:
+        blank: "no puede estar en blanco"
+  navigation:
+    image:
+      show: "mostrar"
+      upload: "crear imagen"
+    images: "imágenes"
+
